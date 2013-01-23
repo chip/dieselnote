@@ -11,14 +11,14 @@ describe Song do
   its(:title) { should eq 'Dear Prudence' }
   its(:artist) { should eq 'The Beatles' }
 
-  context '#info' do
+  context '#show_info' do
     it 'includes @title & @song' do
-      expect(song.info).to eq SongDSLHelper.song_info
+      expect(song.show_info).to eq SongDSLHelper.song_info
     end
 
     it 'includes dynamic @attributes' do
       song.album('The White Album')
-      expect(song.info).to eq SongDSLHelper.song_info_with_attributes
+      expect(song.show_info).to eq SongDSLHelper.song_info_with_attributes
     end
   end
 end

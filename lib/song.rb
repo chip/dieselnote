@@ -22,7 +22,7 @@ class Song
     @attributes = {}
   end
 
-  def info
+  def show_info
     <<-EOF.gsub(/^\s+/,'')
     Title: #{title}
     Artist: #{artist}
