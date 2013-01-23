@@ -1,15 +1,23 @@
 # Song Class
 #
-# A song requires a title & artist
-# However, it can build dynamic attributes such as
-# Genre, Date, Album, or any the user wishes to create
-# on the fly
+# A song requires a title & artist.  Additionally,
+# it can build dynamic attributes such as Genre, Date, Album, 
+# or any the user wishes to create on the fly.
+#
+# Usage: song = Song.new('Dear Prudence', 'The Beatles')
+# song.album('The White Album')
+# song.year(1968)
+#
+# song.info => "Title: Dear Prudence\n
+#               Artist: The Beatles\n
+#               Album: The White Album\n
+#               Year: 1968"
 #
 class Song
-  attr_reader :title
-  attr_accessor :artist
+  attr_reader :title, :artist
 
-  def initialize(title)
+  def initialize(title, artist)
+    @artist = artist
     @title = title
     @attributes = {}
   end

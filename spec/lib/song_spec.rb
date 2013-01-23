@@ -2,12 +2,9 @@ require 'spec_helper'
 require 'song'
 
 describe Song do
+  let(:artist) { 'The Beatles' }
   let(:title) { 'Dear Prudence' }
-  let(:song) { Song.new(title) }
-
-  before do
-    song.artist = 'The Beatles'
-  end
+  let(:song) { Song.new(title, artist) }
 
   subject { song }
 
