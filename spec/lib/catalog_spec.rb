@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'catalog'
 
 describe Catalog do
