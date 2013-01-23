@@ -4,6 +4,8 @@
 # dynamically find a song by any attribute
 #
 class Catalog
+  FINDER = /^find_by_/
+
   attr_reader :songs
 
   def initialize
@@ -17,22 +19,21 @@ class Catalog
   private
 
   def find_song_by(attr, query)
-    songs.select { |s| s.send(attr) == query }
+    songs.select { |song| song.send(attr) == query }
   end
 
   def method_missing(method, query)
-    finder = method.to_s
-    super unless finder =~ /find_by_/
-    construct_dynamic_finder(method, query, finder)
+    super unless method.to_s =~ FINDER
+    construct_dynamic_finder(method, query)
+    send(method, query)
   end
 
-  def construct_dynamic_finder(method, query, finder)
-    self.class.class_eval do 
+  def construct_dynamic_finder(method, query)
+    self.class.class_eval do
       define_method(method) do |query|
-        attr = finder.sub(/find_by_/,'')
-        find_song_by(attr.to_sym, query)
+        attr = method.to_s.sub(FINDER,'').to_sym
+        find_song_by(attr, query)
       end
     end
-    send(method, query)
   end
 end
