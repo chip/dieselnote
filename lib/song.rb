@@ -11,9 +11,23 @@ class Song
 
   def initialize(title)
     @title = title
+    @attributes = {}
   end
 
-  def to_s
-    "#{title} - #{artist}"
+  def info
+    <<-EOF.gsub(/^\s+/,'')
+    Title: #{title}
+    Artist: #{artist}
+    #{attributes_info.join("\n")}
+    EOF
+  end
+
+  private
+  def method_missing(method, arg)
+    @attributes[method] = arg
+  end
+
+  def attributes_info
+    @attributes.map { |attr| key,val=attr; "#{key.to_s.capitalize}: #{val}" }
   end
 end
