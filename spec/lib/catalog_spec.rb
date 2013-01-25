@@ -3,8 +3,7 @@ require 'catalog'
 
 describe Catalog do
   let(:catalog) { Catalog.new }
-  let(:song) { double('song', title: 'Dear Prudence',
-                     artist: 'The Beatles', album: 'The White Album') } 
+  let(:song) { double('song', title: 'Dear Prudence', artist: 'The Beatles') } 
 
   it 'starts with an empty catalog' do
     expect(catalog.songs).to be_empty
@@ -25,8 +24,10 @@ describe Catalog do
       expect(catalog.find_by_artist('The Beatles')).to include(song)
     end
 
-    it 'finds by album' do
-      expect(catalog.find_by_album('The White Album')).to include(song)
+    it 'finds multiple songs' do
+      another_song = double('song', title: "I'm So Tired", artist: 'The Beatles')
+      catalog.add_song(another_song)
+      expect(catalog.find_by_artist('The Beatles')).to eq [song, another_song]
     end
   end
 end

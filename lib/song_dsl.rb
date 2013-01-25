@@ -1,5 +1,5 @@
-require_relative 'catalog'
-require_relative 'song'
+require 'catalog'
+require 'song'
 
 module SongDSL
   DSL_FINDER = /^find_/
