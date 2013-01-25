@@ -3,7 +3,6 @@ module SongDSLHelper
     def song_info
       <<-EOF.gsub(/^\s+/,'')
     Title: Dear Prudence
-    Artist: The Beatles
       EOF
     end
 
