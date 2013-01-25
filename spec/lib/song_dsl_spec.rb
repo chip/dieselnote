@@ -25,4 +25,11 @@ describe SongDSL do
 
     find_title('Dear Prudence') { show_info }
   end
+
+  it 'finds many songs with a dynamic finder' do
+    song('Dear Prudence') { {artist: 'The Beatles', album: 'The White Album'} }
+    song("I'm So Tired") { {artist: 'The Beatles', album: 'The White Album'} }
+
+    find_artist('The Beatles')
+  end
 end

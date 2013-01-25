@@ -19,7 +19,7 @@ class Catalog
   private
 
   def find_song_by(attr, query)
-    songs.select { |song| song.send(attr) == query }
+    songs.select { |song| song.send(attr, query) == query }
   end
 
   def method_missing(method, query)
