@@ -4,7 +4,8 @@
 # it can build dynamic attributes such as Genre, Date, Album, 
 # or any the user wishes to create on the fly.
 #
-# Usage: song = Song.new('Dear Prudence', 'The Beatles')
+# Usage: song = Song.new('Dear Prudence')
+# song.artist('The Beatles')
 # song.album('The White Album')
 # song.year(1968)
 #
@@ -14,10 +15,9 @@
 #               Year: 1968"
 #
 class Song
-  attr_reader :title, :artist
+  attr_reader :title
 
-  def initialize(title, artist)
-    @artist = artist
+  def initialize(title)
     @title = title
     @attributes = {}
   end
@@ -25,7 +25,6 @@ class Song
   def show_info
     <<-EOF.gsub(/^\s+/,'')
     Title: #{title}
-    Artist: #{artist}
     #{attributes_info.join("\n")}
     EOF
   end
