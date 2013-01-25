@@ -14,27 +14,29 @@
 #               Album: The White Album\n
 #               Year: 1968"
 #
-class Song
-  attr_reader :title
+module DieselNote
+  class Song
+    attr_reader :title
 
-  def initialize(title)
-    @title = title
-    @attributes = {}
-  end
+    def initialize(title)
+      @title = title
+      @attributes = {}
+    end
 
-  def show_info
-    <<-EOF.gsub(/^\s+/,'')
+    def show_info
+      <<-EOF.gsub(/^\s+/,'')
     Title: #{title}
     #{attributes_info.join("\n")}
     EOF
-  end
+    end
 
-  private
-  def method_missing(method, arg)
-    @attributes[method] = arg
-  end
+    private
+    def method_missing(method, arg)
+      @attributes[method] = arg
+    end
 
-  def attributes_info
-    @attributes.map { |attr| key,val=attr; "#{key.to_s.capitalize}: #{val}" }
+    def attributes_info
+      @attributes.map { |attr| key,val=attr; "#{key.to_s.capitalize}: #{val}" }
+    end
   end
 end

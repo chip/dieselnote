@@ -1,6 +1,6 @@
 require 'reek/spec'
 require 'simplecov'
-require 'support/song_dsl_helper'
+require 'support/diesel_note_helper'
 
 SimpleCov.start
 
