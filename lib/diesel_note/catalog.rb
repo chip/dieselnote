@@ -13,7 +13,7 @@ module DieselNote
 #   find_by_artist 'The Beatles'
 #
   class Catalog
-    CATALOG_FINDER = /^find_by_/
+    DieselNote::CATALOG_FINDER = /^find_by_/
 
     attr_reader :songs
 
@@ -36,7 +36,7 @@ module DieselNote
     end
 
     def method_missing(method, query)
-      super unless method.to_s =~ CATALOG_FINDER
+      super unless method.to_s =~ DieselNote::CATALOG_FINDER
       construct_dynamic_finder(method, query)
       send(method, query)
     end
@@ -44,7 +44,7 @@ module DieselNote
     def construct_dynamic_finder(method, query)
       self.class.class_eval do
         define_method(method) do |query|
-          attr = method.to_s.sub(CATALOG_FINDER,'').to_sym
+          attr = method.to_s.sub(DieselNote::CATALOG_FINDER,'').to_sym
           find_song_by(attr, query)
         end
       end
