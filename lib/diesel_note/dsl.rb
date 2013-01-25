@@ -1,6 +1,7 @@
 require 'diesel_note/catalog'
 require 'diesel_note/song'
 
+module DieselNote
 # SongDSL Module
 #
 # Include this module to gain access to it's methods
@@ -12,7 +13,6 @@ require 'diesel_note/song'
 #  find_title('Dear Prudence')
 #  find_artist('The Beatles') { puts show_info }
 #
-module DieselNote
   module DSL
     DSL_FINDER = /^find_/
       SongCatalog = Catalog.new

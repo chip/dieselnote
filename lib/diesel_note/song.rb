@@ -1,3 +1,4 @@
+module DieselNote
 # Song Class
 #
 # A song requires a title & artist.  Additionally,
@@ -14,7 +15,6 @@
 #               Album: The White Album\n
 #               Year: 1968"
 #
-module DieselNote
   class Song
     attr_reader :title
 
@@ -25,9 +25,9 @@ module DieselNote
 
     def show_info
       <<-EOF.gsub(/^\s+/,'')
-    Title: #{title}
-    #{attributes_info.join("\n")}
-    EOF
+        Title: #{title}
+        #{attributes_info.join("\n")}
+      EOF
     end
 
     private

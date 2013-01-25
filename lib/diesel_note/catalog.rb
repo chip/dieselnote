@@ -1,13 +1,21 @@
+module DieselNote
 # Catalog Class
 #
 # The Catalog contains Songs.  It can add &
-# dynamically find a song by any attribute
+# dynamically find a song by any attribute.
 #
-module DieselNote
+# Usage:
+#   song = Song.new('Dear Prudence')
+#   catalog = Catalog.new
+#   catalog.add_song(song)
+#
+#   find_by_title 'Dear Prudence'
+#   find_by_artist 'The Beatles'
+#
   class Catalog
     CATALOG_FINDER = /^find_by_/
 
-      attr_reader :songs
+    attr_reader :songs
 
     def initialize
       @songs = []
@@ -15,6 +23,10 @@ module DieselNote
 
     def add_song(song)
       @songs << song
+    end
+
+    def find_by_title(title)
+      songs.select { |song| song.title == title }
     end
 
     private
