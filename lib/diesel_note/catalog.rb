@@ -32,7 +32,10 @@ module DieselNote
     private
 
     def find_song_by(attr, query)
-      songs.select { |song| song.send(attr, query) == query }
+      songs.keep_if do |song|
+        attrs = song.instance_variable_get('@attributes') || {}
+        attrs[attr] == query
+      end
     end
 
     def method_missing(method, query)

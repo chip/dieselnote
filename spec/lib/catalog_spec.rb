@@ -1,10 +1,16 @@
 require 'spec_helper'
 require 'diesel_note/catalog'
+require 'diesel_note/song'
 
 module DieselNote
   describe Catalog do
     let(:catalog) { Catalog.new }
-    let(:song) { double('song', title: 'Dear Prudence', artist: 'The Beatles') } 
+
+    let(:song) do 
+      new = Song.new('Dear Prudence')
+      new.artist('The Beatles')
+      new
+    end
 
     it 'starts with an empty catalog' do
       expect(catalog.songs).to be_empty
@@ -26,9 +32,20 @@ module DieselNote
       end
 
       it 'finds multiple songs' do
-        another_song = double('song', title: "I'm So Tired", artist: 'The Beatles')
+        another_song = Song.new("I'm So Tired") 
+        another_song.artist('The Beatles')
         catalog.add_song(another_song)
         expect(catalog.find_by_artist('The Beatles')).to eq [song, another_song]
+      end
+
+      it 'does not include non-matches' do
+        new_song = Song.new('Dear Prudence')
+        catalog.add_song(new_song)
+        expect(catalog.find_by_artist('The Beatles')).not_to include(new_song)
+      end
+
+      it 'is empty if no songs found' do
+        expect(catalog.find_by_artist('Rolling Stones')).to be_empty
       end
     end
   end
