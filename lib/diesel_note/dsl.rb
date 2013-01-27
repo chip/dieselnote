@@ -4,7 +4,7 @@ require 'diesel_note/song'
 module DieselNote
 # SongDSL Module
 #
-# Include this module to gain access to it's methods
+# Include this module to gain access to its methods
 #
 # Usage:
 #  song('Dear Prudence') { {artist: 'The Beatles', album: 'The White Album'} }
