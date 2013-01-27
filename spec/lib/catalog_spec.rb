@@ -19,7 +19,7 @@ module DieselNote
     context 'catalog' do
       before { catalog.add_song(song) }
 
-      it 'adds an a song to the catalog' do
+      it 'adds a song to the catalog' do
         expect(catalog.songs).to include song
       end
 
