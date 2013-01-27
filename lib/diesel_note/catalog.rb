@@ -32,7 +32,7 @@ module DieselNote
     private
 
     def find_song_by(attr, query)
-      songs.keep_if do |song|
+      songs.select do |song|
         attrs = song.instance_variable_get('@attributes') || {}
         attrs[attr] == query
       end

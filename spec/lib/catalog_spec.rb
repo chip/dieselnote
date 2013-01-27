@@ -47,6 +47,11 @@ module DieselNote
       it 'is empty if no songs found' do
         expect(catalog.find_by_artist('Rolling Stones')).to be_empty
       end
+
+      it 'preserves the catalog if no songs found on previous seach' do
+        catalog.find_by_artist('Rolling Stones')
+        expect(catalog.find_by_artist('The Beatles')).not_to be_empty
+      end
     end
   end
 end
