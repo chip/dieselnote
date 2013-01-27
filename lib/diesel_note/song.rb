@@ -1,9 +1,9 @@
 module DieselNote
 # Song Class
 #
-# A song requires a title & artist.  Additionally,
-# it can build dynamic attributes such as Genre, Date, Album, 
-# or any the user wishes to create on the fly.
+# A song requires a title.  Additionally, it can build dynamic 
+# attributes of your choosing.  For example, Artist, Album,
+# Genre, Date, etc.
 #
 # Usage: song = Song.new('Dear Prudence')
 # song.artist('The Beatles')
