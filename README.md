@@ -9,7 +9,7 @@ Usage
 -----
 
 ```
-require 'dieselnote'
+require 'diesel_note'
 
 song('Dear Prudence') { {artist: 'The Beatles', album: 'The White Album'} }
 find_artist('The Beatles') { puts show_info }
